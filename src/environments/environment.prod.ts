@@ -1,11 +1,12 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: 'AIzaSyD2B-BjQYHO7bf5cgSVDgQXm59wBs9TU-0',
-    authDomain: 'oshop-40028.firebaseapp.com',
-    databaseURL: 'https://oshop-40028.firebaseio.com',
-    projectId: 'oshop-40028',
+    //Replace config information from Firebase project console here
+    apiKey: '',
+    authDomain: '',
+    databaseURL: '',
+    projectId: '',
     storageBucket: '',
-    messagingSenderId: '617030805955'
+    messagingSenderId: ''
   }
 };
