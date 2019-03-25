@@ -5,13 +5,12 @@
 export const environment = {
   production: false,
   firebase: {
-    //Replace config information from Firebase project console here
-    apiKey: '',
-    authDomain: '',
-    databaseURL: '',
-    projectId: '',
-    storageBucket: '',
-    messagingSenderId: ''
+    apiKey: 'AIzaSyD2B-BjQYHO7bf5cgSVDgQXm59wBs9TU-0',
+    authDomain: 'oshop-40028.firebaseapp.com',
+    databaseURL: 'https://oshop-40028.firebaseio.com',
+    projectId: 'oshop-40028',
+    storageBucket: 'oshop-40028.appspot.com',
+    messagingSenderId: '617030805955'
   }
 };
 
