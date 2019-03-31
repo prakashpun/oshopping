@@ -10,15 +10,36 @@ import { Product } from 'src/models/product';
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
 
+  // products: Product[];
+  // filteredProducts: any[];
+  // subscription: Subscription;
+
+  // constructor(private productService: ProductService) {
+  //   this.subscription = this.productService.getAll()
+  //   .subscribe( products => {
+  //     this.filteredProducts = this.products = products;
+  //   });
+  // }
+
   products: Product[];
-  filteredProducts: any[];
+  filteredProducts: Product[];
   subscription: Subscription;
 
   constructor(private productService: ProductService) {
     this.subscription = this.productService.getAll()
-    .subscribe( products => {
-      this.filteredProducts = this.products = products;
-    });
+      .subscribe(products => {
+        this.filteredProducts = this.products = products.map(
+          product => {
+            return <Product>{
+              title: product.payload.val()['title'],
+              category: product.payload.val()['category'],
+              imageUrl: product.payload.val()['imageUrl'],
+              price: product.payload.val()['price'],
+              key: product.key
+            }
+          }
+        );
+      });
   }
 
   filter(query: string) {

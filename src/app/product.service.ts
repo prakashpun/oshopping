@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { map } from 'rxjs/operators';
-import { Product } from 'src/models/product';
+import { retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +14,7 @@ export class ProductService {
   }
 
   getAll() {
-    return this.db.list('/products', ref => ref.orderByChild('title'))
-    .snapshotChanges().pipe(
-      map(products => products.map(product => {
-        const key = product.payload.key;
-        const data = product.payload.val();
-        return {key, ...data} as Product;
-      }))
-    );
+    return this.db.list('/products').snapshotChanges();
   }
 
   getProduct(productId) {
