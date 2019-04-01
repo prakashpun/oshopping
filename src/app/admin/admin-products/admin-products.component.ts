@@ -29,7 +29,6 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
             }
           }
         );
-        // this.initializeTable(this.products);
       });
   }
 
