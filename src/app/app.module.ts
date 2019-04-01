@@ -16,6 +16,7 @@ import { OrderSuccessComponent } from './order-success/order-success.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
+import { DataTableModule } from 'angular-6-datatable';
 
 import { RouterModule} from '@angular/router';
 import { LoginComponent } from './login/login.component';
@@ -29,6 +30,7 @@ import { CategoryService } from './category.service';
 import { ProductService } from './product.service';
 
 import { CustomFormsModule } from 'ng2-validation';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import { CustomFormsModule } from 'ng2-validation';
     BrowserModule,
     FormsModule,
     CustomFormsModule,
+    DataTableModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,

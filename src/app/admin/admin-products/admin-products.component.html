@@ -8,21 +8,31 @@
     type="text" class="form-control" placeholder="Search..">
 </p>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Price</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr *ngFor="let p of filteredProducts">
-        <td>{{ p.title }}</td>
-        <td>{{ p.price }}</td>
-        <td>
-          <a [routerLink]="['/admin/products/',p.key]">Edit</a>
-        </td>
+<table class="table table-striped" [mfData]="filteredProducts" #mf="mfDataTable" [mfRowsOnPage]="5">
+    <thead>
+      <tr>
+        <th style="width: 40%">
+            <mfDefaultSorter by="title">Title</mfDefaultSorter>
+        </th>
+        <th style="width: 50%">
+            <mfDefaultSorter by="price">Price</mfDefaultSorter>
+        </th>
+        <th></th>
       </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of mf.data">
+        <td>{{ p.title }}</td>
+        <td>{{ p.price | currency:'INR':true }}</td>
+        <td>
+          <a [routerLink]="['/admin/products/', p.key]" >Edit</a>
+        </td>
     </tbody>
-</table>
+    <tfoot>
+    <tr>
+        <td colspan="4">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+    </tr>
+    </tfoot>
+  </table>
