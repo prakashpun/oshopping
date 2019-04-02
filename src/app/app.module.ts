@@ -31,6 +31,8 @@ import { ProductService } from './product.service';
 
 import { CustomFormsModule } from 'ng2-validation';
 import { from } from 'rxjs';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { from } from 'rxjs';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductFilterComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,

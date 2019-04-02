@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from 'src/models/product';
 import { Subscription } from 'rxjs';
-import { CategoryService } from '../category.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -11,12 +11,16 @@ import { CategoryService } from '../category.service';
 })
 export class ProductsComponent {
 
-  categories$;
-  products: Product[];
+  products: Product[] = [];
   subscription: Subscription;
+  category: string;
+  filteredProducts: Product[] = [];
 
 
-  constructor(private productService: ProductService, categoryService: CategoryService) {
+  constructor(
+    route: ActivatedRoute,
+    private productService: ProductService
+    ) {
     this.subscription = this.productService.getAll()
     .subscribe(products => {
       this.products = products.map(
@@ -31,7 +35,12 @@ export class ProductsComponent {
         }
       );
 
-      this.categories$ = categoryService.getCategories();
+      route.queryParamMap.subscribe( params => {
+        this.category = params.get('category');
+        this.filteredProducts = (this.category) ?
+          this.products.filter(p => p.category === this.category) :
+          this.products;
+      });
     });
    }
 
