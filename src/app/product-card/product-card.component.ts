@@ -26,7 +26,7 @@ export class ProductCardComponent {
   removeFromCart() {
     this.cartService.removeFromCart(this.product);
   }
-  
+
   getQuantity() {
     if (!this.ShoppingCart) { return 0; }
     const item = this.ShoppingCart.items[this.product.key];
