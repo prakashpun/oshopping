@@ -33,7 +33,7 @@ export class ShoppingCartService {
     const cartId = await this.getOrCreateCartId();
     return this.db.object('/shopping-carts/' + cartId)
     .snapshotChanges().pipe(
-      map(x => new ShoppingCart(x.payload.val().items)));
+      map((x: any) => new ShoppingCart(x.payload.val().items)));
   }
 
   private getItem(cartId: string, productId: string) {
