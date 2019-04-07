@@ -1,4 +1,5 @@
 import { ShoppingCartItem } from './shopping-cart-items';
+import { Product } from './product';
 
 export class ShoppingCart {
 
@@ -6,7 +7,7 @@ export class ShoppingCart {
 
     constructor(public itemsMap: { [productId: string]: ShoppingCartItem }) {
         // tslint:disable-next-line:forin
-        for (const productId in itemsMap ) {
+        for (const productId in itemsMap) {
             const item = itemsMap[productId];
             this.items.push(new ShoppingCartItem(item.product, item.quantity));
         }
@@ -21,10 +22,15 @@ export class ShoppingCart {
         return count;
     }
 
+    getQuantity(product: Product) {
+        const item = this.itemsMap[product.key];
+        return item ? item.quantity : 0;
+    }
+
     get totalPrice() {
         let sum = 0;
         // tslint:disable-next-line:forin
-        for (const productId in this.items ) {
+        for (const productId in this.items) {
             sum += this.items[productId].totalPrice;
         }
         return sum;
