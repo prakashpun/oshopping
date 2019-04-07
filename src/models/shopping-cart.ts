@@ -2,21 +2,32 @@ import { ShoppingCartItem } from './shopping-cart-items';
 
 export class ShoppingCart {
 
-    constructor(public items: ShoppingCartItem[]) {
+    items: ShoppingCartItem[] = [];
 
-    }
-
-    get productIds() {
-        return Object.keys(this.items);
+    constructor(public itemsMap: { [productId: string]: ShoppingCartItem }) {
+        // tslint:disable-next-line:forin
+        for (const productId in itemsMap ) {
+            const item = itemsMap[productId];
+            this.items.push(new ShoppingCartItem(item.product, item.quantity));
+        }
     }
 
     get totalItemsCount() {
         let count = 0;
         // tslint:disable-next-line:forin
-        for (const productId in this.items) {
-            count += this.items[productId].quantity;
+        for (const productId in this.itemsMap) {
+            count += this.itemsMap[productId].quantity;
         }
         return count;
+    }
+
+    get totalPrice() {
+        let sum = 0;
+        // tslint:disable-next-line:forin
+        for (const productId in this.items ) {
+            sum += this.items[productId].totalPrice;
+        }
+        return sum;
     }
 }
 
