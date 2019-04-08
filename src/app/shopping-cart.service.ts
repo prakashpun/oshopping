@@ -59,7 +59,11 @@ export class ShoppingCartService {
     const items = this.getItem(cartId, product.key);
     items.snapshotChanges().pipe(take(1)).subscribe((item: any) => {
       if (item.payload.val()) {
-        items.update({ product, quantity: item.payload.val().quantity + change });
+        const quantity = item.payload.val().quantity + change;
+        items.update({ product, quantity });
+        if (quantity === 0 ) {
+          items.remove();
+        }
       } else {
         items.update({ product, quantity: 1 });
       }
