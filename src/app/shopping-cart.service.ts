@@ -12,6 +12,26 @@ export class ShoppingCartService {
 
   constructor(private db: AngularFireDatabase) { }
 
+  async getCart(): Promise<Observable<ShoppingCart>> {
+    const cartId = await this.getOrCreateCartId();
+    return this.db.object('/shopping-carts/' + cartId)
+    .snapshotChanges().pipe(
+      map((x: any) => new ShoppingCart(x.payload.val().items)));
+  }
+
+  async addToCart(product) {
+    this.updateItemQuantity(product, 1);
+  }
+
+  async removeFromCart(product) {
+    this.updateItemQuantity(product, -1);
+  }
+
+  async clearCart() {
+    const cartId = await this.getOrCreateCartId();
+    this.db.object('/shopping-carts/' + cartId + '/items').remove();
+
+  }
   private create() {
     return this.db.list('/shopping-carts').push({
       dateCreated: new Date().getTime()
@@ -29,24 +49,10 @@ export class ShoppingCartService {
 
   }
 
-  async getCart(): Promise<Observable<ShoppingCart>> {
-    const cartId = await this.getOrCreateCartId();
-    return this.db.object('/shopping-carts/' + cartId)
-    .snapshotChanges().pipe(
-      map((x: any) => new ShoppingCart(x.payload.val().items)));
-  }
-
   private getItem(cartId: string, productId: string) {
     return this.db.object('/shopping-carts/' + cartId + '/items/' + productId);
   }
 
-  async addToCart(product) {
-    this.updateItemQuantity(product, 1);
-  }
-
-  async removeFromCart(product) {
-    this.updateItemQuantity(product, -1);
-  }
 
   private async updateItemQuantity(product: Product, change: number ) {
     const cartId = await this.getOrCreateCartId();
