@@ -1,37 +1,37 @@
 <h1>Shopping Cart</h1>
 <ng-container *ngIf="cart$ | async as cart">
-    <p>You have {{ cart.totalItemsCount }} items in your cart.</p>
+  <p>You have {{ cart.totalItemsCount }} items in your cart.
+    <button (click)="clearCart()" class="btn btn-light btn-sm">Clear Shopping Cart</button>
+  </p>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Product</th>
-          <th class="text-right">Quantity</th>
-          <th class="text-right">Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of cart.items">
-          <td>
-            <div [style.backgroundImage]="'url(' + item.product.imageUrl + ')'" class="thumbnail"></div>
-          </td>
-          <td>{{ item.product.title }}</td>
-          <td class="text-right">{{ item.quantity }}</td>
-          <td class="text-right">{{ item.totalPrice | currency:'INR': true }}</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th class="text-right">{{ cart.totalPrice | currency:'INR':true }}</th>
-        </tr>
-      </tfoot>
-    </table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Product</th>
+        <th class="text-right">Quantity</th>
+        <th class="text-right">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cart.items">
+        <td>
+          <div [style.backgroundImage]="'url(' + item.product.imageUrl + ')'" class="thumbnail"></div>
+        </td>
+        <td>{{ item.product.title }}</td>
+        <td class="text-right">{{ item.quantity }}</td>
+        <td class="text-right">{{ item.totalPrice | currency:'INR': true }}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="text-right">{{ cart.totalPrice | currency:'INR':true }}</th>
+      </tr>
+    </tfoot>
+  </table>
+  <a *ngIf="cart.items.length" routerLink="/check-out" class="btn btn-primary btn-sm">Check Out</a>
 
-    <button 
-      (click)="clearCart()"
-      class="btn btn-danger btn-sm">Clear Shopping Cart</button>
 </ng-container>
