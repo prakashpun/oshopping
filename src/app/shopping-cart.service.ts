@@ -32,18 +32,12 @@ export class ShoppingCartService {
     this.db.object('/shopping-carts/' + cartId + '/items').remove();
 
   }
-  private async create() {
-    return this.db.list('/shopping-carts').push({
-      dateCreated: new Date().getTime()
-    });
-  }
 
   private async getOrCreateCartId(): Promise<string> {
     const cartId = localStorage.getItem('cartId');
     if (cartId) {
       return cartId;
     }
-    // const result = await this.create();
     const result = this.db.list('/shopping-carts').push({
       dateCreated: new Date().getTime()
     });
