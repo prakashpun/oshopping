@@ -70,7 +70,7 @@ import { OrderService } from './order.service';
       { path: 'login', component: LoginComponent },
 
       { path: 'check-out', component: CheckOutComponent, canActivate: [ AuthGuardService] },
-      { path: 'order-success', component: OrderSuccessComponent, canActivate: [ AuthGuardService]  },
+      { path: 'order-success/:id', component: OrderSuccessComponent, canActivate: [ AuthGuardService]  },
       { path: 'my/orders', component: MyOrdersComponent, canActivate: [ AuthGuardService]  },
       {
         path: 'admin/products/new',
