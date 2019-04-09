@@ -32,7 +32,7 @@ export class ShoppingCartService {
     this.db.object('/shopping-carts/' + cartId + '/items').remove();
 
   }
-  private create() {
+  private async create() {
     return this.db.list('/shopping-carts').push({
       dateCreated: new Date().getTime()
     });
@@ -43,7 +43,11 @@ export class ShoppingCartService {
     if (cartId) {
       return cartId;
     }
-    const result = await this.create();
+    // const result = await this.create();
+    const result = this.db.list('/shopping-carts').push({
+      dateCreated: new Date().getTime()
+    });
+
     localStorage.setItem('cartId', result.key);
     return result.key;
 
