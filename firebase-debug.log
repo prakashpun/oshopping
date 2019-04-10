@@ -1,0 +1,38 @@
+[debug] [2019-04-10T17:20:49.188Z] ----------------------------------------------------------------------
+[debug] [2019-04-10T17:20:49.193Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\prakash_pun\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2019-04-10T17:20:49.194Z] CLI Version:   6.3.1
+[debug] [2019-04-10T17:20:49.194Z] Platform:      win32
+[debug] [2019-04-10T17:20:49.194Z] Node Version:  v10.13.0
+[debug] [2019-04-10T17:20:49.208Z] Time:          Wed Apr 10 2019 22:50:49 GMT+0530 (India Standard Time)
+[debug] [2019-04-10T17:20:49.208Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-04-10T17:20:49.319Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-04-10T17:20:49.323Z] > authorizing via signed-in user
+[debug] [2019-04-10T17:20:49.323Z] [iam] checking project oshop-40028 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2019-04-10T17:20:49.329Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-04-10T17:20:49.329Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-04-10T17:20:49.912Z] <<< HTTP RESPONSE 200
+[debug] [2019-04-10T17:20:50.033Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/oshop-40028:testIamPermissions  
+
+[debug] [2019-04-10T17:20:51.792Z] <<< HTTP RESPONSE 200
+[debug] [2019-04-10T17:20:51.794Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/oshop-40028  
+ 
+[debug] [2019-04-10T17:20:52.918Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'oshop-40028'...
+[info] 
+[info] i  deploying hosting
+[debug] [2019-04-10T17:20:52.925Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/oshop-40028/versions  
+
+[debug] [2019-04-10T17:20:55.278Z] <<< HTTP RESPONSE 200
+[info] i  hosting[oshop-40028]: beginning deploy...
+[info] i  hosting[oshop-40028]: found 13 files in dist/oshop
+[debug] [2019-04-10T17:20:55.314Z] [hosting] hash cache [ZGlzdFxvc2hvcA] load error: lines is not defined
+[debug] [2019-04-10T17:20:55.430Z] [hosting] hash cache [ZGlzdFxvc2hvcA] stored for 13 files
+[debug] [2019-04-10T17:20:55.430Z] [hosting][hash queue][FINAL]
+[debug] [2019-04-10T17:20:55.430Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/oshop-40028/versions/02978bd056ef7339:populateFiles  
+ <request body omitted>
+[debug] [2019-04-10T17:20:57.837Z] <<< HTTP RESPONSE 200
+[debug] [2019-04-10T17:20:57.856Z] [hosting][populate queue][FINAL]
+[debug] [2019-04-10T17:20:57.856Z] [hosting] uploads queued: 8

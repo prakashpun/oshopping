@@ -22,7 +22,7 @@
       </ul>
 
       <ul class="navbar-nav"> 
-          <li ngbDropdown *ngIf="appUser; else anomymousUser " class="nav-item dropdown">
+          <li ngbDropdown *ngIf="appUser; " class="nav-item dropdown">
             <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">{{appUser.name}}</a>
             <div ngbDropdownMenu class="dropdown-menu " aria-labelledby="dropdown01">
