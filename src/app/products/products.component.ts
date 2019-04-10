@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from '../product.service';
-import { Product } from 'src/models/product';
+import { Product } from 'src/app/models/product';
 import { Subscription, Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { ShoppingCartService } from '../shopping-cart.service';
-import { ShoppingCart } from 'src/models/shopping-cart';
+import { ShoppingCart } from 'src/app/models/shopping-cart';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
@@ -43,13 +43,14 @@ export class ProductsComponent implements OnInit, OnDestroy {
       .subscribe(products => {
         this.products = products.map(
           product => {
-            return <Product>{
+            // tslint:disable-next-line:no-angle-bracket-type-assertion
+            return <Product> {
               title: product.payload.val()['title'],
               category: product.payload.val()['category'],
               imageUrl: product.payload.val()['imageUrl'],
               price: product.payload.val()['price'],
               key: product.key
-            }
+            };
           }
         );
 

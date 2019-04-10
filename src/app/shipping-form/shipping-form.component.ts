@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { Order } from 'src/models/order';
+import { Order } from 'src/app/models/order';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { OrderService } from '../order.service';
-import { ShoppingCart } from 'src/models/shopping-cart';
+import { ShoppingCart } from 'src/app/models/shopping-cart';
 
 @Component({
   // tslint:disable-next-line:component-selector
